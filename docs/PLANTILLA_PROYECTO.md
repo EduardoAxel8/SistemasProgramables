@@ -27,7 +27,7 @@ Explica en 2–3 oraciones:
 
 ---
 
-## 🏗️ Arquitectura del Sistema
+## 🏗️ Arquitectura del Sistema 
 
 ```
 [Sensores x3]
@@ -79,8 +79,8 @@ Explica en 2–3 oraciones:
 
 ### Diagrama de conexiones
 
-> Inserta aquí imagen del esquemático (Fritzing exportado a PNG).
-> El archivo fuente `.fzz` debe estar en `hardware/esquematico.fzz`.
+> Inserta aquí imagen del esquemático en formato PNG.
+
 
 ![Esquemático](hardware/esquematico.png)
 
@@ -101,8 +101,11 @@ pip install -r servidor/requirements.txt
 mosquitto -c mosquitto.conf
 
 # 2. Cargar firmware en la ESP32
-# (Usar Thonny o ampy)
-ampy --port COM3 put firmware/main.py
+#    Opción A (recomendada): abrir Thonny, conectar la ESP32
+#    y cargar los archivos desde firmware\ con la interfaz gráfica
+#
+#    Opción B (línea de comandos):
+mpremote connect COM3 cp firmware\main.py :main.py
 
 # 3. Ejecutar el servidor de IA
 cd servidor/
@@ -111,12 +114,12 @@ python mqtt_bridge.py
 
 ### Librerías principales
 
-| Librería | Versión | Uso |
-|---------|---------|-----|
-| paho-mqtt | ≥ 1.6 | Cliente MQTT en Python |
-| opencv-python | ≥ 4.8 | Procesamiento de imagen |
-| firebase-admin | ≥ 6.0 | Escritura en Firestore |
-| _librería IA_ | x.x | _modelo usado_ |
+| Librería |  Uso |
+Librería	Uso
+umqtt.simple	Cliente MQTT en la ESP32
+machine	Control de pines GPIO
+network	Conexión WiFi
+otras según proyecto
 
 ---
 
@@ -133,7 +136,7 @@ python mqtt_bridge.py
 
 **Video demostrativo (YouTube):** [▶️ Ver video](https://youtube.com/watch?v=XXXXXXXX)
 
-### Fotos del prototipo final
+### Fotos del prototipo final 
 
 | Vista frontal | Vista interna | Sistema en operación |
 |--------------|---------------|----------------------|
