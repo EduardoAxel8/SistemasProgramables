@@ -1,0 +1,1 @@
+# SmartClass — Asistencia con biometricos 
