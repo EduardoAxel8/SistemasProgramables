@@ -24,10 +24,11 @@ Explica en 2–3 oraciones:
 - ¿A quién ayuda este proyecto?
 - ¿Qué problema resuelve?
 - ¿Cómo lo resuelve de forma diferente a lo que ya existe?
-
+Agrega la imagen descriptiva de tu proyecto que entregaste en el Módulo de comunicaciones como prototipo 1
+Agrega la imagen final descriptiva de tu proyecto como prototipo final
 ---
 
-## 🏗️ Arquitectura del Sistema 
+## 🏗️ Arquitectura del Sistema (Reemplazar por el de tuproyecto)
 
 ```
 [Sensores x3]
