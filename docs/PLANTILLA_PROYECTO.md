@@ -24,11 +24,10 @@ Explica en 2–3 oraciones:
 - ¿A quién ayuda este proyecto?
 - ¿Qué problema resuelve?
 - ¿Cómo lo resuelve de forma diferente a lo que ya existe?
-Agrega la imagen descriptiva de tu proyecto que entregaste en el Módulo de comunicaciones como prototipo 1
-Agrega la imagen final descriptiva de tu proyecto como prototipo final
+
 ---
 
-## 🏗️ Arquitectura del Sistema (Reemplazar por el de tuproyecto)
+## 🏗️ Arquitectura del Sistema
 
 ```
 [Sensores x3]
@@ -80,8 +79,8 @@ Agrega la imagen final descriptiva de tu proyecto como prototipo final
 
 ### Diagrama de conexiones
 
-> Inserta aquí imagen del esquemático en formato PNG.
-
+> Inserta aquí imagen del esquemático (Fritzing exportado a PNG).
+> El archivo fuente `.fzz` debe estar en `hardware/esquematico.fzz`.
 
 ![Esquemático](hardware/esquematico.png)
 
@@ -97,30 +96,42 @@ pip install -r servidor/requirements.txt
 
 ### Cómo ejecutar el sistema completo
 
-```bash
-# 1. Levantar el broker MQTT
-mosquitto -c mosquitto.conf
+```cmd
+REM 1. Levantar el broker MQTT (ejecutar en una CMD aparte)
+mosquitto
 
-# 2. Cargar firmware en la ESP32
-#    Opción A (recomendada): abrir Thonny, conectar la ESP32
-#    y cargar los archivos desde firmware\ con la interfaz gráfica
-#
-#    Opción B (línea de comandos):
+REM 2. Cargar firmware en la ESP32
+REM    Opción A (recomendada): abrir Thonny, conectar la ESP32
+REM    y cargar los archivos desde firmware\ con la interfaz gráfica
+REM
+REM    Opción B (línea de comandos):
 mpremote connect COM3 cp firmware\main.py :main.py
 
-# 3. Ejecutar el servidor de IA
-cd servidor/
+REM 3. Ejecutar el servidor de IA (ajustar COM según Administrador de dispositivos)
+cd servidor
 python mqtt_bridge.py
 ```
 
-### Librerías principales
+> ⚠️ El puerto COM varía por computadora. Para encontrar el tuyo:
+> Administrador de dispositivos → Puertos (COM y LPT) → busca "CP210x" o "CH340"
 
-| Librería |  Uso |
-Librería	Uso
-umqtt.simple	Cliente MQTT en la ESP32
-machine	Control de pines GPIO
-network	Conexión WiFi
-otras según proyecto
+### Librerías ESP32 (MicroPython — corren en la placa)
+
+| Librería | Uso |
+|---------|-----|
+| `umqtt.simple` | Cliente MQTT en la ESP32 |
+| `machine` | Control de pines GPIO |
+| `network` | Conexión WiFi |
+| _otras según proyecto_ | |
+
+### Librerías servidor Python (corren en la PC)
+
+| Librería | Versión | Uso |
+|---------|---------|-----|
+| paho-mqtt | ≥ 1.6 | Cliente MQTT en el servidor |
+| opencv-python | ≥ 4.8 | Procesamiento de imagen |
+| firebase-admin | ≥ 6.0 | Escritura en Firestore |
+| _librería IA_ | x.x | _modelo usado_ |
 
 ---
 
@@ -137,7 +148,7 @@ otras según proyecto
 
 **Video demostrativo (YouTube):** [▶️ Ver video](https://youtube.com/watch?v=XXXXXXXX)
 
-### Fotos del prototipo final 
+### Fotos del prototipo final
 
 | Vista frontal | Vista interna | Sistema en operación |
 |--------------|---------------|----------------------|
